@@ -1,0 +1,304 @@
+:root {
+  --azul: #0A2540;
+  --azul-medio: #1E3A5F;
+  --azul-claro: #2D5F8A;
+  --naranja: #FF6B00;
+  --naranja-claro: #FF8C3A;
+  --gris: #F4F7FB;
+  --gris-medio: #E8EDF4;
+  --blanco: #ffffff;
+  --texto: #1a2535;
+  --texto-suave: #5a6a7e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', Arial, sans-serif; background: var(--blanco); color: var(--texto); }
+html { scroll-behavior: smooth; }
+
+/* ══════ HEADER ══════ */
+#header {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 60px;
+  background: var(--azul);
+  transition: all 0.3s;
+}
+#header.scrolled {
+  padding: 12px 60px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  background: rgba(10,37,64,0.97);
+  backdrop-filter: blur(10px);
+}
+.logo { font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 800; color: white; letter-spacing: -0.5px; }
+.logo span { color: var(--naranja); }
+nav a { color: rgba(255,255,255,0.8); text-decoration: none; margin-left: 28px; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+nav a:hover { color: white; }
+.nav-cta { background: var(--naranja) !important; color: white !important; padding: 10px 22px; border-radius: 8px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--naranja-claro) !important; }
+.menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; }
+
+/* ══════ HERO con foto ══════ */
+.hero {
+  min-height: 92vh;
+  /* Reemplazá hero-bg.jpg por tu foto */
+  background: linear-gradient(rgba(10,37,64,0.82), rgba(10,37,64,0.90)), url('img/descarga.png') center/cover no-repeat;
+  display: flex; align-items: center;
+  padding: 80px 60px;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(45,95,138,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(255,107,0,0.12) 0%, transparent 50%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 620px; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,107,0,0.15);
+  border: 1px solid rgba(255,107,0,0.35);
+  color: var(--naranja-claro);
+  padding: 6px 16px; border-radius: 30px;
+  font-size: 0.85rem; font-weight: 600;
+  margin-bottom: 24px; letter-spacing: 0.5px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 800; color: white; line-height: 1.1; margin-bottom: 20px;
+}
+.highlight { color: var(--naranja); }
+.hero p { color: rgba(255,255,255,0.72); font-size: 1.1rem; line-height: 1.6; margin-bottom: 36px; max-width: 480px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 50px; }
+
+.btn-primary {
+  background: var(--naranja); color: white;
+  padding: 14px 28px; border-radius: 10px;
+  text-decoration: none; font-weight: 700; font-size: 0.95rem;
+  border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--naranja-claro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,0,0.35); }
+
+.btn-outline {
+  background: transparent; color: white;
+  padding: 14px 28px; border-radius: 10px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: all 0.2s; display: inline-block;
+}
+.btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+.btn-full { width: 100%; text-align: center; }
+
+.hero-stats { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.stat { text-align: center; }
+.stat-num { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; color: var(--naranja); }
+.stat > span { font-size: 1.3rem; font-weight: 700; color: var(--naranja); }
+.stat p { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.stat-div { width: 1px; height: 40px; background: rgba(255,255,255,0.15); }
+
+/* ══════ ACCESOS ══════ */
+.accesos { display: flex; justify-content: center; gap: 0; background: var(--azul-medio); padding: 0; flex-wrap: wrap; }
+.acceso-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 22px 36px; color: white; text-decoration: none;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s; flex: 1; min-width: 180px; justify-content: center;
+}
+.acceso-card:hover { background: rgba(255,255,255,0.08); }
+.acceso-card:last-child { border-right: none; }
+.acceso-icon { font-size: 1.4rem; }
+.acceso-card strong { font-size: 0.9rem; font-weight: 600; }
+.acceso-arrow { margin-left: auto; opacity: 0.5; font-size: 1.1rem; }
+
+/* ══════ SECCIONES GENERALES ══════ */
+section { padding: 100px 60px; }
+.section-label {
+  display: inline-block;
+  background: rgba(255,107,0,0.1); color: var(--naranja);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
+  padding: 4px 14px; border-radius: 20px; margin-bottom: 16px;
+}
+.section-label.light { background: rgba(255,107,0,0.2); color: var(--naranja-claro); }
+h2 { font-family: 'Sora', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--azul); margin-bottom: 14px; line-height: 1.2; }
+h2.white { color: white; }
+.section-sub { color: var(--texto-suave); font-size: 1rem; margin-bottom: 50px; }
+.section-sub.light { color: rgba(255,255,255,0.65); }
+
+/* ══════ NOSOTROS ══════ */
+.nosotros { background: var(--gris); }
+.nosotros-inner { display: flex; align-items: center; gap: 80px; max-width: 1100px; margin: auto; flex-wrap: wrap; }
+.nosotros-texto { flex: 1; min-width: 300px; }
+.nosotros-texto h2 { margin-bottom: 20px; }
+.nosotros-texto p { color: var(--texto-suave); line-height: 1.7; margin-bottom: 14px; }
+.nosotros-values { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.value-item { background: white; border: 1px solid var(--gris-medio); padding: 10px 18px; border-radius: 30px; font-size: 0.88rem; font-weight: 600; color: var(--azul); display: flex; align-items: center; gap: 8px; }
+.nosotros-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex-shrink: 0; }
+.nos-card { border-radius: 20px; padding: 30px 24px; text-align: center; }
+.nc1 { background: var(--azul); color: white; }
+.nc2 { background: var(--naranja); color: white; }
+.nc3 { background: var(--azul-medio); color: white; }
+.nc4 { background: white; border: 2px solid var(--gris-medio); color: var(--azul); }
+.nc-num { font-family: 'Sora', sans-serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 6px; }
+.nc-label { font-size: 0.82rem; opacity: 0.85; font-weight: 500; }
+
+/* ══════ SEGUROS con foto ══════ */
+.seguros {
+  /* Reemplazá seguros-bg.jpg por tu foto */
+  background: linear-gradient(rgba(10,37,64,0.88), rgba(10,37,64,0.92)), url('img/Seguroauto.png') center/cover no-repeat;
+  background-attachment: fixed;
+  text-align: center;
+  position: relative;
+}
+.seguros-overlay { position: absolute; inset: 0; }
+.seguros-content { position: relative; z-index: 2; }
+.seguros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
+.seguro-card {
+  background: white; border-radius: 24px; padding: 40px 32px; text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; border: 2px solid transparent;
+}
+.seguro-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(10,37,64,0.18); border-color: var(--naranja); }
+.seguro-card.featured { background: var(--azul); transform: translateY(-10px); box-shadow: 0 24px 60px rgba(10,37,64,0.35); }
+.featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--naranja); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+.seguro-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.seguro-card h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--azul); }
+.seguro-card.featured h3 { color: white; }
+.seguro-card p { font-size: 0.9rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
+.seguro-card.featured p { color: rgba(255,255,255,0.7); }
+.seguro-lista { list-style: none; margin-bottom: 28px; }
+.seguro-lista li { font-size: 0.88rem; color: var(--texto-suave); padding: 5px 0; font-weight: 500; }
+.seguro-card.featured .seguro-lista li { color: rgba(255,255,255,0.75); }
+
+/* ══════ PROCESO ══════ */
+.proceso { background: white; text-align: center; }
+.proceso-steps { display: flex; align-items: flex-start; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap; }
+.step { flex: 1; min-width: 220px; padding: 36px 28px; background: var(--gris); border-radius: 24px; text-align: center; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
+.step:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10,37,64,0.1); }
+.step-num { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--naranja); color: white; font-family: 'Sora', sans-serif; font-size: 0.85rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; }
+.step-icon { font-size: 2.8rem; margin: 10px 0 16px; }
+.step h3 { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--azul); margin-bottom: 10px; }
+.step p { font-size: 0.88rem; color: var(--texto-suave); line-height: 1.6; }
+.step-arrow { font-size: 1.8rem; color: var(--naranja); opacity: 0.4; align-self: center; flex-shrink: 0; padding-top: 20px; }
+
+/* ══════ POR QUÉ ══════ */
+.porque { background: var(--gris); text-align: center; }
+.comparacion { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 900px; margin: 0 auto; flex-wrap: wrap; }
+.comp-col { flex: 1; min-width: 260px; border-radius: 20px; overflow: hidden; }
+.comp-col h3 { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 800; padding: 20px 24px; margin: 0; }
+.comp-col.otros h3 { background: #eee; color: #888; }
+.comp-col.nosotros-col h3 { background: var(--azul); color: white; }
+.comp-item { padding: 14px 24px; font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.comp-item.bad { background: #fafafa; color: #aaa; text-decoration: line-through; }
+.comp-item.good { background: rgba(10,37,64,0.04); color: var(--azul); font-weight: 600; }
+.comp-vs { font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--naranja); flex-shrink: 0; }
+
+/* ══════ TESTIMONIOS ══════ */
+.testimonios { background: white; text-align: center; overflow: hidden; }
+.testi-wrapper { overflow: hidden; max-width: 760px; margin: 0 auto 28px; }
+.testi-track { display: flex; transition: transform 0.5s cubic-bezier(0.65,0,0.35,1); }
+.testi-card { min-width: 100%; background: var(--gris); border-radius: 20px; padding: 40px 48px; text-align: left; box-sizing: border-box; }
+.testi-stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+.testi-card p { font-size: 1.05rem; color: var(--texto); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+.testi-autor { display: flex; align-items: center; gap: 14px; }
+.testi-avatar { width: 44px; height: 44px; background: var(--azul); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+.testi-autor strong { display: block; font-weight: 700; color: var(--azul); }
+.testi-autor span { font-size: 0.82rem; color: var(--texto-suave); }
+.testi-dots { display: flex; justify-content: center; gap: 10px; }
+.tdot { width: 10px; height: 10px; border-radius: 50%; background: var(--gris-medio); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+.tdot.active { background: var(--naranja); transform: scale(1.3); }
+
+/* ══════ FAQ ══════ */
+.faq { background: var(--azul); text-align: center; }
+.faq h2 { color: white; }
+.faq .section-label { background: rgba(255,107,0,0.2); }
+.faq-list { max-width: 700px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item:hover { border-color: rgba(255,255,255,0.25); }
+.faq-btn { width: 100%; background: none; border: none; color: white; padding: 20px 24px; font-size: 0.97rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: 'DM Sans', sans-serif; }
+.faq-icon { font-size: 1.4rem; font-weight: 300; color: var(--naranja); transition: transform 0.3s; flex-shrink: 0; }
+.faq-btn.open .faq-icon { transform: rotate(45deg); }
+.faq-resp { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.faq-resp.open { max-height: 200px; padding: 0 24px 20px; }
+.faq-resp p { color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.6; }
+
+/* ══════ CONTACTO con foto ══════ */
+.contacto {
+  /* Reemplazá contacto-bg.jpg por tu foto */
+  background: linear-gradient(rgba(10,37,64,0.88), rgba(10,37,64,0.93)), url('img/SEGUROjpg.png') center/cover no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+.contacto-overlay { position: absolute; inset: 0; }
+.contacto-inner { display: flex; gap: 80px; max-width: 1000px; margin: auto; align-items: flex-start; flex-wrap: wrap; position: relative; z-index: 2; }
+.contacto-texto { flex: 1; min-width: 280px; }
+.contacto-texto h2 { margin-bottom: 16px; }
+.white-sub { color: rgba(255,255,255,0.7) !important; line-height: 1.6; margin-bottom: 36px; font-size: 1rem; }
+.contacto-features { display: flex; flex-direction: column; gap: 14px; }
+.cf-item { font-size: 0.95rem; font-weight: 600; color: white; display: flex; align-items: center; gap: 12px; }
+
+.contacto-form { flex: 1; min-width: 300px; background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.form-header { background: var(--naranja); padding: 24px 36px; }
+.form-header h3 { font-family: 'Sora', sans-serif; color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+.form-header p { color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+
+.contacto-form form { padding: 32px 36px; }
+.contacto-form input,
+.contacto-form select,
+.contacto-form textarea {
+  width: 100%; padding: 13px 16px; margin-bottom: 14px;
+  border: 1.5px solid var(--gris-medio); border-radius: 10px;
+  font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
+  color: var(--texto); background: white; outline: none;
+  transition: border-color 0.2s; display: block;
+}
+.contacto-form input:focus,
+.contacto-form select:focus,
+.contacto-form textarea:focus { border-color: var(--naranja); }
+.contacto-form textarea { resize: none; }
+
+.btn-submit { width: 100%; background: var(--naranja); color: white; border: none; padding: 15px; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.2s; }
+.btn-submit:hover { background: var(--naranja-claro); transform: translateY(-2px); }
+
+/* ══════ FOOTER ══════ */
+footer { background: var(--azul); color: white; text-align: center; padding: 60px 40px; }
+.footer-logo { font-family: 'Sora', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+.footer-logo span { color: var(--naranja); }
+.footer-inner p { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 8px; line-height: 1.6; }
+.footer-links { display: flex; justify-content: center; gap: 28px; margin: 24px 0; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-copy { font-size: 0.8rem !important; margin-top: 16px !important; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px !important; }
+
+/* ══════ WHATSAPP ══════ */
+.whatsapp { position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.3s; }
+.whatsapp:hover { transform: scale(1.1); }
+.whatsapp img { width: 34px; }
+
+/* ══════ ANIMACIONES ══════ */
+.animar { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.animar.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════ RESPONSIVE ══════ */
+@media (max-width: 900px) {
+  #header { padding: 16px 24px; }
+  .menu-toggle { display: block; }
+  nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--azul); padding: 20px; gap: 14px; }
+  nav.active { display: flex; }
+  nav a { margin-left: 0; }
+  .hero { padding: 60px 24px; }
+  .hero-buttons { flex-direction: column; align-items: flex-start; }
+  .accesos { flex-direction: column; }
+  .acceso-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  section { padding: 70px 24px; }
+  .nosotros-inner { flex-direction: column; gap: 40px; }
+  .seguros-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .seguro-card.featured { transform: none; }
+  .proceso-steps { flex-direction: column; align-items: center; }
+  .step-arrow { transform: rotate(90deg); padding: 0; }
+  .comparacion { flex-direction: column; }
+  .comp-vs { display: none; }
+  .testi-card { padding: 30px 24px; }
+  .contacto-inner { flex-direction: column; gap: 40px; }
+  .contacto-form { width: 100%; }
+}
