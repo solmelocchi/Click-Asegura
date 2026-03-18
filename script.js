@@ -30,11 +30,11 @@ window.addEventListener('scroll', checkAnimar);
 checkAnimar();
 
 // ══════════════════════════════════════
-// CONTADOR STATS
+// CONTADOR STATS — arranca en 0, cuenta al llegar
 // ══════════════════════════════════════
-let contadorListo = false;
 function animarContador(el) {
   const target = parseInt(el.getAttribute('data-target'));
+  el.textContent = '0';
   const duration = 1800;
   const step = target / (duration / 16);
   let current = 0;
@@ -45,20 +45,25 @@ function animarContador(el) {
   }, 16);
 }
 
-const heroSection = document.querySelector('.hero');
-const heroObserver = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting && !contadorListo) {
-    contadorListo = true;
-    document.querySelectorAll('.stat-num').forEach(animarContador);
-  }
-}, { threshold: 0.3 });
-if (heroSection) heroObserver.observe(heroSection);
+let contadorListo = false;
+const statsEl = document.querySelector('.hero-stats');
+
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !contadorListo) {
+      contadorListo = true;
+      document.querySelectorAll('.stat-num').forEach(animarContador);
+    }
+  });
+}, { threshold: 0.8 });
+
+if (statsEl) statsObserver.observe(statsEl);
 
 // ══════════════════════════════════════
 // CARRUSEL TESTIMONIOS
 // ══════════════════════════════════════
 let currentTesti = 0;
-const totalTesti = 4;
+const totalTesti = 5;
 const testiTrack = document.getElementById('testiTrack');
 const testiDots = document.querySelectorAll('.tdot');
 
