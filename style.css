@@ -40,7 +40,6 @@ nav a:hover { color: white; }
 /* ══════ HERO con foto ══════ */
 .hero {
   min-height: 92vh;
-  /* Reemplazá hero-bg.jpg por tu foto */
   background: linear-gradient(rgba(10,37,64,0.82), rgba(10,37,64,0.90)), url('img/descarga.png') center/cover no-repeat;
   display: flex; align-items: center;
   padding: 80px 60px;
@@ -90,9 +89,16 @@ nav a:hover { color: white; }
 .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
 .btn-full { width: 100%; text-align: center; }
 
+/* ══════ STATS HERO — con animación ══════ */
 .hero-stats { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .stat { text-align: center; }
-.stat-num { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; color: var(--naranja); }
+.stat-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 2rem; font-weight: 800;
+  color: var(--naranja);
+  display: inline-block;
+  transition: transform 0.3s;
+}
 .stat > span { font-size: 1.3rem; font-weight: 700; color: var(--naranja); }
 .stat p { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
 .stat-div { width: 1px; height: 40px; background: rgba(255,255,255,0.15); }
@@ -142,9 +148,8 @@ h2.white { color: white; }
 .nc-num { font-family: 'Sora', sans-serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 6px; }
 .nc-label { font-size: 0.82rem; opacity: 0.85; font-weight: 500; }
 
-/* ══════ SEGUROS con foto ══════ */
+/* ══════ SEGUROS — 2x2 todas azules ══════ */
 .seguros {
-  /* Reemplazá seguros-bg.jpg por tu foto */
   background: linear-gradient(rgba(10,37,64,0.88), rgba(10,37,64,0.92)), url('img/Seguroauto.png') center/cover no-repeat;
   background-attachment: fixed;
   text-align: center;
@@ -152,23 +157,46 @@ h2.white { color: white; }
 }
 .seguros-overlay { position: absolute; inset: 0; }
 .seguros-content { position: relative; z-index: 2; }
-.seguros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
-.seguro-card {
-  background: white; border-radius: 24px; padding: 40px 32px; text-align: left;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative; border: 2px solid transparent;
+
+.seguros-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
 }
-.seguro-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(10,37,64,0.18); border-color: var(--naranja); }
-.seguro-card.featured { background: var(--azul); transform: translateY(-10px); box-shadow: 0 24px 60px rgba(10,37,64,0.35); }
-.featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--naranja); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+
+.seguro-card {
+  background: var(--azul-medio);
+  border-radius: 24px;
+  padding: 40px 32px;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  border: 2px solid rgba(255,255,255,0.08);
+}
+.seguro-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border-color: var(--naranja);
+}
+seguro-card.featured {
+  border-color: var(--naranja);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  transform: none;
+}
+}
+.featured-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--naranja); color: white;
+  font-size: 0.75rem; font-weight: 700;
+  padding: 4px 16px; border-radius: 20px; white-space: nowrap;
+}
 .seguro-icon { font-size: 2.5rem; margin-bottom: 16px; }
-.seguro-card h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--azul); }
-.seguro-card.featured h3 { color: white; }
-.seguro-card p { font-size: 0.9rem; color: var(--texto-suave); margin-bottom: 20px; line-height: 1.6; }
-.seguro-card.featured p { color: rgba(255,255,255,0.7); }
+.seguro-card h3 { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: white; }
+.seguro-card p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 20px; line-height: 1.6; }
 .seguro-lista { list-style: none; margin-bottom: 28px; }
-.seguro-lista li { font-size: 0.88rem; color: var(--texto-suave); padding: 5px 0; font-weight: 500; }
-.seguro-card.featured .seguro-lista li { color: rgba(255,255,255,0.75); }
+.seguro-lista li { font-size: 0.88rem; color: rgba(255,255,255,0.75); padding: 5px 0; font-weight: 500; }
 
 /* ══════ PROCESO ══════ */
 .proceso { background: white; text-align: center; }
@@ -224,7 +252,6 @@ h2.white { color: white; }
 
 /* ══════ CONTACTO con foto ══════ */
 .contacto {
-  /* Reemplazá contacto-bg.jpg por tu foto */
   background: linear-gradient(rgba(10,37,64,0.88), rgba(10,37,64,0.93)), url('img/SEGUROjpg.png') center/cover no-repeat;
   background-attachment: fixed;
   position: relative;
@@ -265,9 +292,6 @@ footer { background: var(--azul); color: white; text-align: center; padding: 60p
 .footer-logo { font-family: 'Sora', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
 .footer-logo span { color: var(--naranja); }
 .footer-inner p { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 8px; line-height: 1.6; }
-.footer-links { display: flex; justify-content: center; gap: 28px; margin: 24px 0; flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-.footer-links a:hover { color: white; }
 .footer-copy { font-size: 0.8rem !important; margin-top: 16px !important; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px !important; }
 
 /* ══════ WHATSAPP ══════ */
